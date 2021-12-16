@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>Dyanamic CRUD application </title>
+
+<link rel="stylesheet" href=" {% static 'enroll/css/bootstrap.css' %}">
+
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+<h2 class="text-center  alert alert-success">$$P dyanamic Crud site</h2>
+
+{% block content  %}
+
+
+{% endblock content  %}
+
+</div>
+
+<script src="{% static 'enroll/js/jquery.js' %}" ></script>
+<script src="{% static 'enroll/js/popper.js' %}" ></script>
+<script src="{% static 'enroll/js/bootstrap.js' %}" ></script>
+</body>
+
+</html>

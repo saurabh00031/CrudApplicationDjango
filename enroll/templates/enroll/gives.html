@@ -1,0 +1,88 @@
+{% extends 'enroll/base.html' %}
+{% block content  %}
+
+<h3>Gives here</h3>
+<div class="kkk">
+
+<button><a href="{% url 'addandshow' %}">Registration form</a></button>
+</div>
+
+<div class ="col-sm-7 offset-1">
+<h3 class="text-center alert alert-warning" >info table<h3>
+{% if stu %}
+  <h3>the results:</h3>
+ <center>
+
+{% comment %} sssssssssssssssssssss {% endcomment %}
+
+       <div class="srch">
+           <form action="/search" method="get">
+            <input name="q" type="text" placeholder="Search" />
+            <div>
+            <button class="btn btn-info">Search</button>
+            </div>
+         </form>
+       </div>
+
+{% comment %} sssssssssssssssssssss {% endcomment %}
+
+       <h4>data</h4>
+  </center>
+   
+
+      <table class="csss-serial">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PASSWORD</th>
+      <th scope="col">CITY</th>
+      <th scope="col">AGE</th>
+      <th scope="col">PHONE</th>
+       <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for i in stu %}
+
+    <tr>
+
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.password}}</td>
+      <td>{{i.city}}</td>
+      <td>{{i.age}}</td>
+      <td>{{i.phone}}</td>
+      <td>
+
+         <a href="{% url 'updatedata' i.id %}" class="btn btn-warning">Update</a>
+         
+       
+          {% comment %} <a href="{% url 'deletedata' i.id %}" class="btn btn-warning">delete</a> {% endcomment %}
+
+         <form action="{% url 'deletedata' i.id %}" method ="post" class="d-inline">
+         {% csrf_token %}
+         <input type="submit" value="Delete" class="btn btn-danger">
+
+         </form>
+      </td>
+      
+    </tr>
+
+{% endfor %}
+  </tbody>
+</table>
+      
+
+
+
+{% else %}
+  <h3>no value found</h3>
+
+{% endif %}
+
+
+{% endblock  %}
